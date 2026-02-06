@@ -28,7 +28,9 @@
   overflow: hidden;
   color: #fff;
 
+  body.flower-bg {
   background: url("flowers.jpeg") center/cover no-repeat;
+}
 }
 .card::before {
   content: "";
@@ -197,6 +199,7 @@ body.video-active::before {
   </style>
 </head>
 <body>
+  <body class="flower-bg">
   <video loop playsinline id="bgVideo" style="display:none;">
   <source src="valen2.mp4" type="video/mp4">
 </video>
@@ -230,6 +233,8 @@ body.video-active::before {
     });
 
     yesBtn.addEventListener("click", () => {
+      document.body.classList.remove("flower-bg");
+
   bgVideo.style.display = "block";
   bgVideo.muted = false;
   bgVideo.volume = 0;
