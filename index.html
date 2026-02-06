@@ -69,7 +69,45 @@
       transition: all 0.3s ease;
       position: relative;
     }
+    .tagline {
+  font-size: 1.8rem; 
+  color: #ffffff;
+  display: inline-block;
+  max-width: 100%;
+}
 
+.tagline {
+  animation: glowText 1.5s infinite alternate;
+}
+
+@keyframes glowText {
+  from {
+    text-shadow: 0 0 8px #ff4d6d;
+  }
+  to {
+    text-shadow: 0 0 25px #ff99ac;
+  }
+}
+.typing-text {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid #fff;
+  width: 0;
+  animation: typing 3s steps(40, end) forwards,
+             blink 0.8s infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+ .card {
+  max-width: 90vw;
+}
     #yesBtn {
       background: linear-gradient(45deg, #ff4d6d, #ff758f);
       color: white;
@@ -205,7 +243,8 @@ body.video-active::before {
 
   <div class="card" id="card">
     <h1>Roses are red, violets are blue… will you be my Valentine too?💘</h1>
-    <p>You make my world brighter every day ✨</p>
+    <p class="tagline typing-text">You make my world brighter every day ✨</p>
+
 
     <div class="buttons">
       <button id="yesBtn">Yes 💖</button>
