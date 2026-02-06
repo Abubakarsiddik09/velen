@@ -20,14 +20,28 @@
     }
 
     .card {
-      background: white;
-      padding: 40px 50px;
-      border-radius: 25px;
-      text-align: center;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-      position: relative;
-      animation: pop 1s ease;
-    }
+  position: relative;
+  padding: 40px 50px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  animation: pop 1s ease;
+  overflow: hidden;
+  color: #fff;
+
+  background: url("flowers.jpeg") center/cover no-repeat;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 105, 180, 0.35);
+  z-index: 0;
+}
+.card * {
+  position: relative;
+  z-index: 1;
+}    
 
     @keyframes pop {
       from { transform: scale(0.7); opacity: 0; }
