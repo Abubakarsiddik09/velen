@@ -105,6 +105,15 @@
       from { text-shadow: 0 0 10px #ff4d6d; }
       to { text-shadow: 0 0 30px #ff99ac; }
     }
+    .valentine-img {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
   </style>
 </head>
 <body>
@@ -138,6 +147,7 @@
       card.innerHTML = `
         <h1 class="magic">Kayva You're Now My Valentine💍💖</h1>
         <p>Kavya Love You Forever😘</p>
+        <img src="VALEN.jpeg" alt="VALEN" class="valentine-img">
       `;
       createHearts();
       setInterval(createHearts, 500);
