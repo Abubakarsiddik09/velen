@@ -12,7 +12,6 @@
     body {
       margin: 0;
       height: 100vh;
-      background: radial-gradient(circle at top, #ff9a9e, #fad0c4);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -171,10 +170,37 @@
     transform: translateY(0);
   }
 }
+#bgVideo {
+  filter: blur(3px) brightness(0.8);
+  animation: videoZoom 20s infinite alternate ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+@keyframes videoZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}    
+body.video-active::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 182, 193, 0.35);
+  z-index: -1;
+}
 
+    
   </style>
 </head>
 <body>
+  <video loop playsinline id="bgVideo" style="display:none;">
+  <source src="valen2.mp4" type="video/mp4">
+</video>
+
 
   <div class="card" id="card">
     <h1>Roses are red, violets are blue… will you be my Valentine too?💘</h1>
@@ -190,6 +216,8 @@
     const noBtn = document.getElementById("noBtn");
     const yesBtn = document.getElementById("yesBtn");
     const card = document.getElementById("card");
+    const bgVideo = document.getElementById("bgVideo");
+
 
     noBtn.style.left = "60%";
     noBtn.style.top = "10px";
@@ -202,16 +230,35 @@
     });
 
     yesBtn.addEventListener("click", () => {
-      card.innerHTML = `
-       <div class="loveReveal">
-        <h1 class="magic">Kayva You're Now My Valentine💍💖</h1>
-        <p>Kavya Love You Forever😘</p>
-        <img src="VALEN.jpeg" alt="VALEN" class="valentine-img">
-        </div>
-      `;
-      createHearts();
-      setInterval(createHearts, 500);
-    });
+  bgVideo.style.display = "block";
+  bgVideo.muted = false;
+  bgVideo.volume = 0;
+
+  bgVideo.play();
+
+  document.body.classList.add("video-active");
+      
+  let vol = 0;
+  const fadeAudio = setInterval(() => {
+    if (vol < 0.6) {
+      vol += 0.05;
+      bgVideo.volume = vol;
+    } else {
+      clearInterval(fadeAudio);
+    }
+  }, 200);
+  card.innerHTML = `
+    <div class="loveReveal">
+      <h1 class="magic">Kavya You're Now My Valentine 💍💖</h1>
+      <p>Kavya Love You Forever 😘</p>
+      <img src="VALEN.jpeg" alt="VALEN" class="valentine-img">
+    </div>
+  `;
+
+  createHearts();
+  setInterval(createHearts, 500);
+});
+
 
     function createHearts() {
       for (let i = 0; i < 5; i++) {
