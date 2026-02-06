@@ -134,7 +134,19 @@
   border-radius: 20px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
       animation: imageSlide 2s ease;
+      animation: steadyFlow 6s ease-in-out infinite;
 }
+@keyframes steadyFlow {
+  0% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-12px) scale(1.02);
+  }
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+}    
 @keyframes imageSlide {
   from {
     opacity: 0;
