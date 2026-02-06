@@ -153,11 +153,41 @@
     }
 
    .magic {
-  font-size: 2rem;
-  color: #ff4d6d;
-  animation: glow 1.5s infinite alternate, pulse 2s infinite;
-}
+  font-size: 3rem;
+  font-weight: 700;
 
+  background: linear-gradient(45deg, #ff4d6d, #ff99ac, #ffd6e0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  -webkit-text-stroke: 1px rgba(0,0,0,0.4);
+
+  text-shadow:
+    0 0 15px #ff4d6d,
+    0 0 30px #ff99ac,
+    0 0 45px #ffccd5;
+
+  animation: romanticFloat 3s ease-in-out infinite;
+}
+.loveText {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #fff;
+
+  text-shadow:
+    0 0 10px #ff4d6d,
+    0 0 20px #ff99ac,
+    0 0 30px #ffccd5;
+
+  -webkit-text-stroke: 0.5px rgba(0,0,0,0.5);
+
+  animation: romanticFloat 3s ease-in-out infinite;
+}
+@keyframes romanticFloat {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.05); }
@@ -297,7 +327,7 @@ body.video-active::before {
   card.innerHTML = `
     <div class="loveReveal">
       <h1 class="magic">Kavya You're Now My Valentine 💍💖</h1>
-      <p>Kavya Love You Forever 😘</p>
+      <p class="loveText">Kavya Love You Forever 😘</p>
       <img src="VALEN.jpeg" alt="VALEN" class="valentine-img">
     </div>
   `;
